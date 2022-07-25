@@ -113,10 +113,15 @@ function removeLeadingAndTrailingWhitespaces(a) {
  *   'A', 5  => 'AAAAA'
  *   'cat', 3 => 'catcatcat'
  */
-function repeatString(/* value, count */) {
+function repeatString(value, count) {
   // console.log(value * count);
   // return value * count;
-  throw new Error('Not implemented');
+  // throw new Error('Not implemented');
+  let newStr = '';
+  for (let z = 0; z < count; z += 1) {
+    newStr += value;
+  }
+  return newStr;
 }
 
 /**
@@ -131,8 +136,9 @@ function repeatString(/* value, count */) {
  *   'I like legends', 'end' => 'I like legs',
  *   'ABABAB','BA' => 'ABAB'
  */
-function removeFirstOccurrences(/* str, value */) {
-  throw new Error('Not implemented');
+function removeFirstOccurrences(str, value) {
+  const someReg = new RegExp(value);
+  return str.replace(someReg, '');
 }
 
 /**
@@ -146,8 +152,10 @@ function removeFirstOccurrences(/* str, value */) {
  *   '<span>' => 'span'
  *   '<a>' => 'a'
  */
-function unbracketTag(/* str */) {
-  throw new Error('Not implemented');
+function unbracketTag(a) {
+  // throw new Error('Not implemented');
+  // /xmas/i, 'Christmas';
+  return a.replace(/<|>/gm, '');
 }
 
 /**
@@ -160,8 +168,9 @@ function unbracketTag(/* str */) {
  *   'Thunderstruck' => 'THUNDERSTRUCK'
  *  'abcdefghijklmnopqrstuvwxyz' => 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
  */
-function convertToUpperCase(/* str */) {
-  throw new Error('Not implemented');
+function convertToUpperCase(str) {
+  return str.toLocaleUpperCase();
+  // throw new Error('Not implemented');
 }
 
 /**
@@ -179,8 +188,8 @@ function convertToUpperCase(/* str */) {
  *   ],
  *   'info@gmail.com' => ['info@gmail.com']
  */
-function extractEmails(/* str */) {
-  throw new Error('Not implemented');
+function extractEmails(str) {
+  return str.split(';');
 }
 
 /**
@@ -206,8 +215,22 @@ function extractEmails(/* str */) {
  *             '└──────────┘\n'
  *
  */
-function getRectangleString(/* width, height */) {
-  throw new Error('Not implemented');
+function getRectangleString(wid, hght) {
+  let Newstr = '';
+  for (let i = 0; i < hght; i += 1) {
+    for (let j = 0; j < wid; j += 1) {
+      if (i === 0 && j === 0) Newstr += '┌';
+      else if (i === 0 && j === wid - 1) Newstr += '┐\n';
+      else if (i === hght - 1 && j === 0) Newstr += '└';
+      else if (i === hght - 1 && j === wid - 1) Newstr += '┘\n';
+      else if (i > 0 && i < hght - 1 && j === 0) Newstr += '│';
+      else if (i > 0 && i < hght - 1 && j === wid - 1) Newstr += '│\n';
+      else if ((i === 0 || i === hght - 1) && j > 0 && j < wid - 1) {
+        Newstr += '─';
+      } else Newstr += ' ';
+    }
+  }
+  return Newstr;
 }
 
 /**
